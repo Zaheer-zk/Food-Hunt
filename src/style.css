@@ -18,9 +18,9 @@
   padding: 20px;
 }
 
-.logo {
-  padding: 10px;
-  text-align: center;
+.logo img {
+  padding: 0;
+  width: 40%;
 }
 
 .nav {
@@ -32,6 +32,12 @@
   list-style: none;
   padding: 10px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.nav__link:hover {
+  color: black;
 }
 
 .card--container {
