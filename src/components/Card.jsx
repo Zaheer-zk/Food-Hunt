@@ -6,7 +6,7 @@ const Card = ({ data }) => {
       <div className="card__details">
         <h2>{data?.name}</h2>
         <h3>{data?.cuisines.join(', ')}</h3>
-        <h4>{data?.rating}</h4>
+        <h4>{data?.rating} ⭐</h4>
       </div>
     </div>
   );

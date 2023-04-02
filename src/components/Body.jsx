@@ -10,7 +10,9 @@ const Body = () => {
 
   return (
     <>
-      <SearchBar data={foodData} setRestaurantData={setRestaurantData} />
+      <div className="search">
+        <SearchBar data={foodData} setRestaurantData={setRestaurantData} />
+      </div>
       <div className="card--container">
         {restaurantData.map((data) => (
           <Card key={shortid.generate()} data={data} />

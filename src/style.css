@@ -78,3 +78,29 @@
   background-color: #abc4aa;
   padding: 20px;
 }
+
+.search {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.search__input {
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 2px 4px 4px 4px rgba(0, 0, 0, 0.2);
+  outline: none;
+  border: 0 1px solid black;
+}
+
+.search__input:focus {
+  outline: none;
+  border: none;
+  color: #675d50;
+}
+
+.search__button {
+  padding: 10px;
+  background-color: #675d50;
+  color: aliceblue;
+}
