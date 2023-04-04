@@ -10,7 +10,7 @@ const SearchBar = (props) => {
   // Filter the data
   const filterData = (searchKey, restaurantData) => {
     return restaurantData.filter((data) =>
-      data.name.toLowerCase().includes(searchKey.toLowerCase())
+      data.strMeal.toLowerCase().includes(searchKey.toLowerCase())
     );
   };
 
