@@ -10,7 +10,7 @@ const SearchBar = (props) => {
   // Filter the data
   const filterData = (searchKey, restaurantData) => {
     return restaurantData.filter((data) =>
-      data.strMeal.toLowerCase().includes(searchKey.toLowerCase())
+      data?.strMeal?.toLowerCase()?.includes(searchKey.toLowerCase())
     );
   };
 
@@ -18,6 +18,8 @@ const SearchBar = (props) => {
     e.preventDefault(); // Prevent form submission behavior
 
     const data = filterData(searchKey, props.data);
+
+    // data.length === 0 ? ['There is no such food'] : data;
 
     // Set filtered data
     props.setRestaurantData(data);

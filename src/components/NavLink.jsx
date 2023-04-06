@@ -1,4 +1,8 @@
+import { useState } from 'react';
+
 const NavLink = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <>
       <ul className="nav">
@@ -14,6 +18,15 @@ const NavLink = () => {
         <li className="nav__link" href="#">
           Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i>
         </li>
+        {loggedIn ? (
+          <button className="nav__link" onClick={() => setLoggedIn(false)}>
+            Logout
+          </button>
+        ) : (
+          <button className="nav__link" onClick={() => setLoggedIn(true)}>
+            Login
+          </button>
+        )}
       </ul>
     </>
   );
