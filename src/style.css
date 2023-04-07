@@ -140,6 +140,12 @@
 }
 
 /* Shimmer animation */
+.shimmer__card {
+  width: 250px;
+  height: 300px;
+  background-color: #999;
+}
+
 .shimmer-wrapper {
   width: 100%;
   height: 70%;
@@ -147,8 +153,8 @@
 }
 
 .shimmer {
-  width: 100%;
-  height: 100%;
+  width: 250px;
+  height: 300px;
   background: #f6f7f8;
   background-image: linear-gradient(
     to right,
@@ -160,15 +166,15 @@
   position: absolute;
   top: 0;
   left: -100px;
-  transform: rotate(20deg);
-  animation: shimmer 2s infinite;
+  transform: rotate(0deg);
+  animation: shimmer 3s infinite;
 }
 
 @keyframes shimmer {
   0% {
-    left: -100px;
+    left: -3px;
   }
   100% {
-    left: 100%;
+    left: 3%;
   }
 }
