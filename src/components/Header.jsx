@@ -1,5 +1,6 @@
 import Title from './Title';
 import NavLink from './NavLink';
+import { Link } from 'react-router-dom';
 
 //Header
 const Header = () => {

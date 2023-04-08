@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import foodData from '../config';
 import shortid from 'shortid';
 import Card from './Card';
 import SearchBar from './SearchBar';
@@ -7,38 +6,30 @@ import Shimmer from './Shimmer';
 
 //Body
 const Body = () => {
-  const [meals, setMeals] = useState([]);
-  const [restaurantData, setRestaurantData] = useState(meals);
+  const [restaurantData, setRestaurantData] = useState([]);
 
   useEffect(() => {
     // Fetch the data using api
     const fetchMeals = async () => {
       const response = await fetch(
-        'https://www.themealdb.com/api/json/v1/1/search.php?f=s'
+        'https://www.swiggy.com/dapi/restaurants/list/v5?lat=27.6093912&lng=75.1397935&page_type=DESKTOP_WEB_LISTING'
       );
       const data = await response.json();
-      setMeals(data.meals);
+      setRestaurantData(data?.data?.cards[2]?.data?.data?.cards);
     };
-
     fetchMeals();
-    // console.log(meals);
-    setRestaurantData(meals);
-    // console.log(restaurantData);
-
-    // console.log('Inside useEffect');
   }, []);
 
-  // console.log(restaurantData);
-
-  // console.log('Before return');
-
-  return restaurantData.length === 0 ? (
+  return restaurantData.length == 0 ? (
     <Shimmer />
   ) : (
     <>
       {/* {'Inside Return'} */}
       <div className="search">
-        <SearchBar data={meals} setRestaurantData={setRestaurantData} />
+        <SearchBar
+          data={restaurantData}
+          setRestaurantData={setRestaurantData}
+        />
       </div>
       <div className="card--container">
         {restaurantData.map((data) => (

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const NavLink = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -6,16 +7,16 @@ const NavLink = () => {
   return (
     <>
       <ul className="nav">
-        <li className="nav__link" href="#">
-          Home
+        <li className="nav__link">
+          <Link to="/">Home</Link>
         </li>
-        <li className="nav__link" href="#">
-          About us
+        <li className="nav__link">
+          <Link to="/about">About us</Link>
         </li>
-        <li className="nav__link" href="#">
-          Contact us
+        <li className="nav__link">
+          <Link to="/contact">Contact us</Link>
         </li>
-        <li className="nav__link" href="#">
+        <li className="nav__link">
           Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i>
         </li>
         {loggedIn ? (
