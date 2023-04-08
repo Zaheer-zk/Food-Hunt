@@ -3,6 +3,7 @@ import shortid from 'shortid';
 import Card from './Card';
 import SearchBar from './SearchBar';
 import Shimmer from './Shimmer';
+import { Link } from 'react-router-dom';
 
 //Body
 const Body = () => {
@@ -33,7 +34,9 @@ const Body = () => {
       </div>
       <div className="card--container">
         {restaurantData.map((data) => (
-          <Card key={shortid.generate()} data={data} />
+          <Link to={'/restaurant/' + data.data.id} key={shortid.generate()}>
+            <Card key={shortid.generate()} data={data} />
+          </Link>
         ))}
       </div>
     </>
