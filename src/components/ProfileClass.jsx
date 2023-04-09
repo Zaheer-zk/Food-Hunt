@@ -83,13 +83,22 @@ class Profile extends React.Component {
 export default Profile;
 
 /**
+ * There are 2 phase
+ *
+ * ------ -> constructor -> update ->
+ * render -> render      -> render -> unmounting
+ * : ------------------------------------------ :
+ * commit -> DOM manipulation ---- -> unmounting
+ */
+
+/**
  * Parent to child
  *  Parent - Constructor
  *  Parent - Render
  *    Child - Construct
  *    Child - Render
- *    Child - LifeCycle
- *  Parent - LifeCycle
+ *    Child - (didMount)
+ *  Parent - (didMount)
  */
 
 /**
@@ -102,7 +111,7 @@ export default Profile;
  *    Child2 - Constructor
  *    Child2 - Render
  * COMMIT PHASE START'S
- *    Child1 - LifeCycle (didMount)
- *    Child2 - LifeCycle (didMount)
+ *    Child1 - (didMount)
+ *    Child2 - (didMount)
  *  Parent - LifeCycle
  */
