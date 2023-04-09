@@ -70,7 +70,7 @@ class Profile extends React.Component {
             +
           </button>
         </div> */}
-        <div>
+        <div className="profile__github">
           <img src={this.state.userData?.avatar_url} alt="Profile img" />
           <h1>Name: {this.state.userData?.name}</h1>
           <p>Bio: {this.state.userData?.bio}</p>
