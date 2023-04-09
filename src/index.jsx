@@ -8,6 +8,7 @@ import About from './components/About.jsx';
 import Error from './components/Error.jsx';
 import Contact from './components/Contact.jsx';
 import Restaurant from './components/Restaurant.jsx';
+import Profile from './components/Profile.jsx';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
   );
 };
 
+// To create route use createBrowserRouter ----
 const appRouter = createBrowserRouter([
   {
     path: '/',
@@ -32,6 +34,12 @@ const appRouter = createBrowserRouter([
       {
         path: '/about',
         element: <About />,
+        children: [
+          {
+            path: 'profile', // parentPath/{path}
+            element: <Profile />,
+          },
+        ],
       },
       {
         path: '/contact',
