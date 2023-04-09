@@ -16,6 +16,7 @@ class Profile extends React.Component {
     this.state = {
       count: 0,
       count2: 0,
+      userData: [],
     };
     console.log('constructor');
   }
@@ -23,6 +24,21 @@ class Profile extends React.Component {
   componentDidMount() {
     //It will call after the component initially called
     console.log('didMount');
+
+    //API FETCH
+    const getUserData = async () => {
+      const response = await fetch('https://api.github.com/users/zaheer-zk');
+
+      const json = await response.json();
+      this.setState({
+        userData: json,
+      });
+
+      console.log(json);
+      console.log(this.state.userData);
+    };
+
+    getUserData();
   }
 
   componentDidUpdate() {
@@ -39,19 +55,27 @@ class Profile extends React.Component {
     console.log('render');
     const { count } = this.state;
     return (
-      <>
-        <h1>Profile based component</h1>
-        <h3>Name: {this.props.name}</h3>
-        <h4>Count: {count}</h4>
-        <h4>Count2: {this.state.count2}</h4>
-        <button
-          onClick={(e) => {
-            // WE DO NOT MUTATE STATE DIRECTLY
-            this.setState({ count: count + 1, count2: this.state.count + 1 });
-          }}>
-          +
-        </button>
-      </>
+      <div className="profile">
+        {/* <div>
+          {' '}
+          <h1>Profile based component</h1>
+          <h3>Name: {this.props.name}</h3>
+          <h4>Count: {count}</h4>
+          <h4>Count2: {this.state.count2}</h4>
+          <button
+            onClick={(e) => {
+              // WE DO NOT MUTATE STATE DIRECTLY
+              this.setState({ count: count + 1, count2: this.state.count + 1 });
+            }}>
+            +
+          </button>
+        </div> */}
+        <div>
+          <img src={this.state.userData?.avatar_url} alt="Profile img" />
+          <h1>Name: {this.state.userData?.name}</h1>
+          <p>Bio: {this.state.userData?.bio}</p>
+        </div>
+      </div>
     );
   }
 }

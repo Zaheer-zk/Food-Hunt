@@ -201,3 +201,17 @@
   align-items: center;
   padding: 20px;
 }
+
+/* Profile */
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.profile img {
+  width: 200px;
+  border-radius: 50%;
+  box-shadow: 4px 7px 8px 3px rgba(0, 0, 0, 0.2);
+}
