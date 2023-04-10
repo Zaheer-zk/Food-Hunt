@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
+import { filterData } from '../utils/helper';
 
 const SearchBar = (props) => {
   const [searchKey, setSearchKey] = useState('');
 
   const handleSearchInput = (e) => {
     setSearchKey(e.target.value);
-  };
-
-  // Filter the data
-  const filterData = (searchKey, restaurantData) => {
-    console.log(restaurantData);
-    return restaurantData.filter((data) =>
-      data?.data?.name?.toLowerCase()?.includes(searchKey.toLowerCase())
-    );
   };
 
   const handleSearchButton = (e) => {
