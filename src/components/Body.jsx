@@ -4,6 +4,7 @@ import Card from './Card';
 import SearchBar from './SearchBar';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
+import useOnline from '../utils/useOnline';
 
 //Body
 const Body = () => {
@@ -16,12 +17,19 @@ const Body = () => {
         'https://www.swiggy.com/dapi/restaurants/list/v5?lat=27.6093912&lng=75.1397935&page_type=DESKTOP_WEB_LISTING'
       );
       const data = await response.json();
-      setRestaurantData(data?.data?.cards[2]?.data?.data?.cards);
+      console.log(data);
+      setRestaurantData(data?.data?.cards[0]?.data?.data?.cards);
     };
     fetchMeals();
   }, []);
 
-  return restaurantData.length == 0 ? (
+  const isOnline = useOnline();
+
+  if (!isOnline) {
+    return <h1>🛑 Offline, please check your internet connection</h1>;
+  }
+
+  return !restaurantData ? (
     <Shimmer />
   ) : (
     <>

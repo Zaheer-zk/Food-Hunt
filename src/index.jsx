@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header.jsx';
 import Body from './components/Body.jsx';
@@ -8,7 +8,23 @@ import About from './components/About.jsx';
 import Error from './components/Error.jsx';
 import Contact from './components/Contact.jsx';
 import Restaurant from './components/Restaurant.jsx';
-import Profile from './components/Profile.jsx';
+import ProfileFunc from './components/Profile.jsx';
+import Profile from './components/ProfileClass.jsx';
+
+/**
+ * Optimization -----
+ * Chunking
+ * Code splitting
+ * Lazy loading
+ * Dynamic bundling
+ * On demand loading
+ * dynamic import
+ * Suspense
+ * ------------------
+ */
+
+// On demand loading/importing
+const Instamart = lazy(() => import('./components/Instamart.jsx'));
 
 const App = () => {
   return (
@@ -49,6 +65,14 @@ const appRouter = createBrowserRouter([
         path: '/restaurant/:id',
         element: <Restaurant />,
       },
+      {
+        path: '/instamart',
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Instamart />
+          </Suspense>
+        ),
+      },
     ],
   },
 ]);
@@ -63,4 +87,6 @@ root.render(<RouterProvider router={appRouter} />);
  *  RouterProvider
  *  useRouteError
  *  useParams
+ *  Link
+ *  lazy
  */
