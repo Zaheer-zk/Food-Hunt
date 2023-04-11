@@ -1,3 +1,5 @@
+/* 
+
 * {
   padding: 0;
   margin: 0;
@@ -105,7 +107,10 @@
   color: aliceblue;
 }
 
+ */
+
 /*  Shimmer UI css */
+/*  
 .card {
   width: 300px;
   height: 400px;
@@ -138,8 +143,10 @@
   font-size: 16px;
   color: #999;
 }
+*/
 
 /* Shimmer animation */
+/*  
 .shimmer__card {
   width: 250px;
   height: 300px;
@@ -179,7 +186,10 @@
   }
 }
 
+*/
+
 /* Menu */
+/*  
 .menu {
   text-align: center;
   display: flex;
@@ -201,8 +211,10 @@
   align-items: center;
   padding: 20px;
 }
+*/
 
 /* Profile */
+/*  
 .profile {
   display: flex;
   justify-content: center;
@@ -227,3 +239,9 @@
 .profile__github img {
   margin: 0 auto;
 }
+*/
+
+/* TAILWIND STYLES */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

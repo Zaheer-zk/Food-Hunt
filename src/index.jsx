@@ -28,7 +28,7 @@ const Instamart = lazy(() => import('./components/Instamart.jsx'));
 
 const App = () => {
   return (
-    <div className="app">
+    <div className="font-body">
       <Header />
       <Outlet />
       <Footer />

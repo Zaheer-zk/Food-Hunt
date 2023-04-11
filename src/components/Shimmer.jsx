@@ -1,7 +1,7 @@
 const Shimmer = () => {
   return (
     <>
-      <div className="card--container">
+      <div className="w-80 h-[350px] rounded-lg rounded-lg m-3 shadow-2xl">
         {Array(10)
           .fill('')
           .map((e, index) => {

@@ -8,29 +8,35 @@ const NavLink = () => {
 
   return (
     <>
-      <ul className="nav">
-        <li className="nav__link">
+      <ul className="flex justify-between py-5 ">
+        <li className="flex justify-around px-3 hover:text-white">
           <Link to="/">Home</Link>
         </li>
-        <li className="nav__link">
+        <li className="flex justify-around px-3 hover:text-white">
           <Link to="/about">About us</Link>
         </li>
-        <li className="nav__link">
+        <li className="flex justify-around px-3 hover:text-white">
           <Link to="/contact">Contact us</Link>
         </li>
-        <li className="nav__link">
+        <li className="flex justify-around px-3 hover:text-white">
           <Link to="/instamart">Instamart</Link>
         </li>
-        <li className="nav__link">
+        <li className="flex justify-around px-3 hover:text-white">
           Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i>
         </li>{' '}
-        <li className="nav__link">{isOnline ? '✅' : '🔴'}</li>
+        <li className="flex justify-around px-3 hover:text-white">
+          {isOnline ? '✅' : '🔴'}
+        </li>
         {loggedIn ? (
-          <button className="nav__link" onClick={() => setLoggedIn(false)}>
+          <button
+            className="flex justify-around px-3 hover:text-white"
+            onClick={() => setLoggedIn(false)}>
             Logout
           </button>
         ) : (
-          <button className="nav__link" onClick={() => setLoggedIn(true)}>
+          <button
+            className="flex justify-around px-3 hover:text-white"
+            onClick={() => setLoggedIn(true)}>
             Login
           </button>
         )}
