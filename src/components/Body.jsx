@@ -38,7 +38,7 @@ const Body = () => {
         <SearchBar data={meals} setRestaurantData={setRestaurantData} />
       </div>
       <div className="flex flex-wrap justify-center m-3">
-        {restaurantData.length === 0 ? (
+        {!restaurantData ? (
           <Shimmer />
         ) : (
           restaurantData.map((data) => (
