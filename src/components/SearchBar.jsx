@@ -11,7 +11,7 @@ const SearchBar = (props) => {
   const handleSearchButton = (e) => {
     e.preventDefault(); // Prevent form submission behavior
 
-    let data = filterData(searchKey, props.data);
+    const data = filterData(searchKey, props.data);
 
     // Set filtered data
     props.setRestaurantData(data);

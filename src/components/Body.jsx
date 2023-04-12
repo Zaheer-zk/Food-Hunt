@@ -10,7 +10,7 @@ import { API_URL } from '../config.js';
 
 const Body = () => {
   const [restaurantData, setRestaurantData] = useState([]);
-  const [meals, setMeals] = useState(restaurantData);
+  const [meals, setMeals] = useState([]);
   const isOnline = useOnline();
 
   useEffect(() => {
@@ -19,12 +19,12 @@ const Body = () => {
         const response = await fetch(API_URL);
         const data = await response.json();
         console.log('data', data);
-        setRestaurantData(data?.data?.cards[0]?.data?.data?.cards || []);
+        setRestaurantData(data?.data?.cards[2]?.data?.data?.cards);
+        setMeals(restaurantData);
       } catch (error) {
         console.error('Error fetching data', error);
       }
     };
-    setMeals(restaurantData);
     fetchMeals();
   }, []);
 
