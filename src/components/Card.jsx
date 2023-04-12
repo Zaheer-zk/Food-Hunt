@@ -1,7 +1,7 @@
 //Restaurant card
 const Card = ({ data }) => {
   return (
-    <div className="w-80 h-[350px] rounded-lg rounded-lg m-3 shadow-2xl">
+    <div className="w-80 h-[350px] rounded-lg m-3 bg-white dark:bg-slate-900  px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
       <img
         src={
           'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/' +

@@ -55,7 +55,7 @@ class Profile extends React.Component {
     console.log('render');
     const { count } = this.state;
     return (
-      <div className="profile">
+      <div className="flex text-center">
         {/* <div>
           {' '}
           <h1>Profile based component</h1>
@@ -70,8 +70,12 @@ class Profile extends React.Component {
             +
           </button>
         </div> */}
-        <div className="profile__github">
-          <img src={this.state.userData?.avatar_url} alt="Profile img" />
+        <div className="flex justify-center flex-col items-center">
+          <img
+            src={this.state.userData?.avatar_url}
+            alt="Profile img"
+            className="w-[200px] rounded-full text-center shadow-2xl my-2 "
+          />
           <h1>Name: {this.state.userData?.name}</h1>
           <p>Bio: {this.state.userData?.bio}</p>
         </div>

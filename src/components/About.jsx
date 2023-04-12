@@ -5,15 +5,15 @@ import ProfileFunc from './Profile';
 
 const About = () => {
   return (
-    <div className="profile">
+    <div className="flex text-zinc-700 text-xl bg-slate-100 p-3 justify-center justify-items-center">
       <div>
         <h1>About us </h1>
         <p>
           This is Baba ka dhaba which provide information about nearest
           restaurants
         </p>
-        <p>
-          <Link to="profile">My profile</Link>
+        <p className="underline">
+          <Link to="profile">My profile - 🧑‍💻</Link>
         </p>
       </div>
 
