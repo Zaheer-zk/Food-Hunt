@@ -10,6 +10,7 @@ import Contact from './components/Contact.jsx';
 import Restaurant from './components/Restaurant.jsx';
 import ProfileFunc from './components/Profile.jsx';
 import Profile from './components/ProfileClass.jsx';
+import Cart from './components/Cart.jsx';
 
 /**
  * Optimization -----
@@ -72,6 +73,10 @@ const appRouter = createBrowserRouter([
             <Instamart />
           </Suspense>
         ),
+      },
+      {
+        path: '/cart',
+        element: <Cart />,
       },
     ],
   },

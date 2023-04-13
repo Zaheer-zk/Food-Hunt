@@ -22,8 +22,10 @@ const NavLink = () => {
           <Link to="/instamart">Instamart</Link>
         </li>
         <li className="flex justify-around px-3 hover:text-white items-center">
-          Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-        </li>{' '}
+          <Link to="cart">
+            Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+          </Link>
+        </li>
         <li className="flex justify-around px-3 hover:text-white items-center">
           {isOnline ? '✅' : '🔴'}
         </li>
