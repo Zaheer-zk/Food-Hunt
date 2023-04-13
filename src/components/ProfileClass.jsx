@@ -1,4 +1,5 @@
 import React from 'react';
+import UserContext from '../utils/UserContext';
 
 class Profile extends React.Component {
   /**
@@ -52,6 +53,10 @@ class Profile extends React.Component {
   }
 
   render() {
+    // <UserContext.Consumer>
+    //   {(value) => console.log(value)}
+    // </UserContext.Consumer>;
+
     console.log('render');
     const { count } = this.state;
     return (

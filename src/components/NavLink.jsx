@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useOnline from '../utils/useOnline';
+import { useContext } from 'react';
+import UserContext from '../utils/UserContext';
 
 const NavLink = () => {
+  const { user } = useContext(UserContext);
   const [loggedIn, setLoggedIn] = useState(false);
   const isOnline = useOnline();
 
@@ -22,7 +25,7 @@ const NavLink = () => {
           <Link to="/instamart">Instamart</Link>
         </li>
         <li className="flex justify-around px-3 hover:text-white items-center">
-          <Link to="cart">
+          <Link to="/cart">
             Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i>
           </Link>
         </li>
@@ -33,14 +36,16 @@ const NavLink = () => {
           <button
             className="flex justify-around px-3 hover:text-white bg-red-500 p-3 rounded-md shadow-lg"
             onClick={() => setLoggedIn(false)}>
-            Logout
+            {user.name}
           </button>
         ) : (
-          <button
-            className="flex justify-around px-3 hover:text-white  p-3 rounded-md bg-green-400 shadow-lg"
-            onClick={() => setLoggedIn(true)}>
-            Login
-          </button>
+          <Link to="/signup">
+            <button
+              className="flex justify-around px-3 hover:text-white  p-3 rounded-md bg-green-400 shadow-lg"
+              onClick={() => setLoggedIn(true)}>
+              Login
+            </button>
+          </Link>
         )}
       </ul>
     </>
@@ -48,3 +53,7 @@ const NavLink = () => {
 };
 
 export default NavLink;
+
+/**
+ *
+ */

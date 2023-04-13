@@ -11,6 +11,7 @@ import Restaurant from './components/Restaurant.jsx';
 import ProfileFunc from './components/Profile.jsx';
 import Profile from './components/ProfileClass.jsx';
 import Cart from './components/Cart.jsx';
+import Signup from './components/Signup.jsx';
 
 /**
  * Optimization -----
@@ -29,7 +30,7 @@ const Instamart = lazy(() => import('./components/Instamart.jsx'));
 
 const App = () => {
   return (
-    <div className="font-body">
+    <div className="font-body bg-gray-50">
       <Header />
       <Outlet />
       <Footer />
@@ -77,6 +78,10 @@ const appRouter = createBrowserRouter([
       {
         path: '/cart',
         element: <Cart />,
+      },
+      {
+        path: '/signup',
+        element: <Signup />,
       },
     ],
   },
