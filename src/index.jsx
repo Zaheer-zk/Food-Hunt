@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useContext, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header.jsx';
 import Body from './components/Body.jsx';
@@ -12,6 +12,7 @@ import ProfileFunc from './components/Profile.jsx';
 import Profile from './components/ProfileClass.jsx';
 import Cart from './components/Cart.jsx';
 import Signup from './components/Signup.jsx';
+import UserContext from './utils/UserContext.jsx';
 
 /**
  * Optimization -----
@@ -29,11 +30,17 @@ import Signup from './components/Signup.jsx';
 const Instamart = lazy(() => import('./components/Instamart.jsx'));
 
 const App = () => {
+  const [user, setUser] = useState({
+    name: '',
+    email: 'zaheerkhan01040@gmail.com',
+  });
   return (
     <div className="font-body bg-gray-50">
-      <Header />
-      <Outlet />
-      <Footer />
+      <UserContext.Provider value={{ user: user, setUser: setUser }}>
+        <Header />
+        <Outlet />
+        <Footer />
+      </UserContext.Provider>
     </div>
   );
 };

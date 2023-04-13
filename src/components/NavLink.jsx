@@ -29,6 +29,9 @@ const NavLink = () => {
             Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i>
           </Link>
         </li>
+        <li className="flex justify-around px-3 items-center font-bold text-red-900">
+          <h1>{user.name}</h1>
+        </li>
         <li className="flex justify-around px-3 hover:text-white items-center">
           {isOnline ? '✅' : '🔴'}
         </li>
@@ -36,7 +39,7 @@ const NavLink = () => {
           <button
             className="flex justify-around px-3 hover:text-white bg-red-500 p-3 rounded-md shadow-lg"
             onClick={() => setLoggedIn(false)}>
-            {user.name}
+            Logout
           </button>
         ) : (
           <Link to="/signup">
