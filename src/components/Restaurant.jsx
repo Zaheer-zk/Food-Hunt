@@ -42,6 +42,7 @@ const Restaurant = () => {
           </div>
         </div>
         <div className="text-slate-500 dark:text-slate-400 mt-2 text-xl">
+          <h4 className="font-extrabold text-yellow-500">Menu</h4>
           <ul>
             <li>{menu[1]?.card?.card?.title}</li>
             <li>{menu[2]?.card?.card?.title}</li>

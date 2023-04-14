@@ -13,6 +13,8 @@ import Profile from './components/ProfileClass.jsx';
 import Cart from './components/Cart.jsx';
 import Signup from './components/Signup.jsx';
 import UserContext from './utils/UserContext.jsx';
+import { Provider } from 'react-redux';
+import store from './utils/store.jsx';
 
 /**
  * Optimization -----
@@ -36,11 +38,13 @@ const App = () => {
   });
   return (
     <div className="font-body bg-gray-50">
-      <UserContext.Provider value={{ user: user, setUser: setUser }}>
-        <Header />
-        <Outlet />
-        <Footer />
-      </UserContext.Provider>
+      <Provider store={store}>
+        <UserContext.Provider value={{ user: user, setUser: setUser }}>
+          <Header />
+          <Outlet />
+          <Footer />
+        </UserContext.Provider>
+      </Provider>
     </div>
   );
 };
@@ -73,6 +77,7 @@ const appRouter = createBrowserRouter([
       {
         path: '/restaurant/:id',
         element: <Restaurant />,
+        errorElement: <Error />,
       },
       {
         path: '/instamart',
