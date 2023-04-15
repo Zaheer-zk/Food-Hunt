@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom';
 import useOnline from '../utils/useOnline';
 import { useContext } from 'react';
 import UserContext from '../utils/UserContext';
+import { useSelector } from 'react-redux';
 
 const NavLink = () => {
   const { user } = useContext(UserContext);
   const [loggedIn, setLoggedIn] = useState(false);
   const isOnline = useOnline();
+
+  const cartItem = useSelector((store) => store.cart.items);
+  console.log(cartItem);
 
   return (
     <>
@@ -26,7 +30,9 @@ const NavLink = () => {
         </li>
         <li className="flex justify-around px-3 hover:text-white items-center">
           <Link to="/cart">
-            Cart <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+            <i className="fa fa-shopping-cart" aria-hidden="true">
+              {'  '}- {cartItem.length}
+            </i>
           </Link>
         </li>
         <li className="flex justify-around px-3 items-center font-bold text-red-900">
