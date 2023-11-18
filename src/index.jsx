@@ -3,7 +3,12 @@ import ReactDOM from 'react-dom/client';
 import Header from './components/Header.jsx';
 import Body from './components/Body.jsx';
 import Footer from './components/Footer.jsx';
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  Outlet,
+  RouterProvider,
+  useNavigate,
+} from 'react-router-dom';
 import About from './components/About.jsx';
 import Error from './components/Error.jsx';
 import Contact from './components/Contact.jsx';
@@ -15,6 +20,13 @@ import Signup from './components/Signup.jsx';
 import UserContext from './utils/UserContext.jsx';
 import { Provider } from 'react-redux';
 import store from './utils/store.jsx';
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  RedirectToSignIn,
+  SignUp,
+} from '@clerk/clerk-react';
 
 /**
  * Optimization -----
@@ -31,20 +43,33 @@ import store from './utils/store.jsx';
 // On demand loading/importing
 const Instamart = lazy(() => import('./components/Instamart.jsx'));
 
+if (!process.env.REACT_APP_CLERK_PUBLISHABLE_KEY) {
+  throw new Error('Missing Publishable Key');
+}
+const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
+
 const App = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     name: '',
     email: 'zaheerkhan01040@gmail.com',
   });
   return (
-    <div className="font-body bg-gray-50">
-      <Provider store={store}>
-        <UserContext.Provider value={{ user: user, setUser: setUser }}>
-          <Header />
-          <Outlet />
-          <Footer />
-        </UserContext.Provider>
-      </Provider>
+    <div className='font-body bg-gray-50'>
+      <ClerkProvider publishableKey={clerkPubKey}>
+        {/* <SignedIn> */}
+        <Provider store={store}>
+          <UserContext.Provider value={{ user: user, setUser: setUser }}>
+            <Header />
+            <Outlet />
+            <Footer />
+          </UserContext.Provider>
+        </Provider>
+        {/* </SignedIn> */}
+        {/* <SignedOut>
+          <RedirectToSignIn />
+        </SignedOut> */}
+      </ClerkProvider>
     </div>
   );
 };
@@ -63,12 +88,10 @@ const appRouter = createBrowserRouter([
       {
         path: '/about',
         element: <About />,
-        children: [
-          {
-            path: 'profile', // parentPath/{path}
-            element: <Profile />,
-          },
-        ],
+      },
+      {
+        path: '/profile',
+        element: <Profile />,
       },
       {
         path: '/contact',
@@ -92,8 +115,14 @@ const appRouter = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: '/signup',
-        element: <Signup />,
+        path: '/sign-up/*',
+        element: (
+          <SignUp
+            routing='path'
+            path='/sign-up'
+            className='flex justify-center p-5'
+          />
+        ),
       },
     ],
   },

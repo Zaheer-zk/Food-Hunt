@@ -1,15 +1,22 @@
 import { Link } from 'react-router-dom';
 
-//Footer
 const Footer = () => {
   return (
-    <div className="p-6 bg-amber-300 text-blue-600 text-lg  bottom-0 left-0 w-full flex justify-center">
-      <h3>Made with ❤️ by </h3>
-      <h2 className="hover:text-blue-900 font-bold px-1">
-        {' '}
-        {<Link to="http://zaheer-zk.github.io/Advanced-porfolio/">Zaheer</Link>}
-      </h2>
-    </div>
+    <footer className='bg-zinc-400 text-neutral-800 border-t-2 border-gray-200 py-4 px-8'>
+      <div className='flex justify-center items-center space-x-2'>
+        <h3 className='text-lg'>
+          Made with <span className='text-red-500'>❤️</span> by
+        </h3>
+        <h2 className='font-bold'>
+          <Link
+            to='http://zaheer-zk.github.io/Advanced-porfolio/'
+            className='hover:text-gray-600 transition duration-300'
+          >
+            Zaheer
+          </Link>
+        </h2>
+      </div>
+    </footer>
   );
 };
 

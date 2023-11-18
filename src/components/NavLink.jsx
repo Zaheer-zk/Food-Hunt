@@ -1,68 +1,70 @@
-import { useState } from 'react';
+// import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import useOnline from '../utils/useOnline';
-import { useContext } from 'react';
-import UserContext from '../utils/UserContext';
+// import useOnline from '../utils/useOnline';
+// import UserContext from '../utils/UserContext';
 import { useSelector } from 'react-redux';
+import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
+// import { useUser } from '@clerk/clerk-react';
 
 const NavLink = () => {
-  const { user } = useContext(UserContext);
-  const [loggedIn, setLoggedIn] = useState(false);
-  const isOnline = useOnline();
+  // const { user } = useContext(UserContext);
+  // const [loggedIn, setLoggedIn] = useState(false);
+  // const isOnline = useOnline();
 
-  const cartItem = useSelector((store) => store.cart.items);
-  console.log(cartItem);
+  // const { isLoaded, isSignedIn, user } = useUser();
+
+  const cartItemsCount = useSelector((store) => store.cart.items.length);
+
+  // if (!isLoaded || !isSignedIn) {
+  //   return null;
+  // }
 
   return (
-    <>
-      <ul className="flex justify-between py-5">
-        <li className="flex justify-around px-3 hover:text-white items-center">
-          <Link to="/">Home</Link>
-        </li>
-        <li className="flex justify-around px-3 hover:text-white items-center">
-          <Link to="/about">About us</Link>
-        </li>
-        <li className="flex justify-around px-3 hover:text-white items-center">
-          <Link to="/contact">Contact us</Link>
-        </li>
-        <li className="flex justify-around px-3 hover:text-white items-center">
-          <Link to="/instamart">Instamart</Link>
-        </li>
-        <li className="flex justify-around px-3 hover:text-white items-center">
-          <Link to="/cart">
-            <i className="fa fa-shopping-cart" aria-hidden="true">
-              {'  '}- {cartItem.length}
-            </i>
+    <nav className='text-lg flex justify-between items-center'>
+      <ul className='flex flex-wrap justify-center gap-4 md:gap-8'>
+        <li>
+          <Link
+            to='/'
+            className='hover:text-indigo-500 transition-colors duration-300'
+          >
+            Home
           </Link>
         </li>
-        <li className="flex justify-around px-3 items-center font-bold text-red-900">
-          <h1>{user.name}</h1>
-        </li>
-        <li className="flex justify-around px-3 hover:text-white items-center">
-          {isOnline ? '✅' : '🔴'}
-        </li>
-        {loggedIn ? (
-          <button
-            className="flex justify-around px-3 hover:text-white bg-red-500 p-3 rounded-md shadow-lg"
-            onClick={() => setLoggedIn(false)}>
-            Logout
-          </button>
-        ) : (
-          <Link to="/signup">
-            <button
-              className="flex justify-around px-3 hover:text-white  p-3 rounded-md bg-green-400 shadow-lg"
-              onClick={() => setLoggedIn(true)}>
-              Login
-            </button>
+        <li>
+          <Link
+            to='/about'
+            className='hover:text-indigo-500 transition-colors duration-300'
+          >
+            About us
           </Link>
-        )}
+        </li>
+        {/* ... Other links */}
+        <li>
+          <Link
+            to='/cart'
+            className='hover:text-indigo-500 transition-colors duration-300'
+          >
+            Cart ({cartItemsCount})
+          </Link>
+        </li>
+        {/* <li className='font-medium text-slate-800'>{user.firstName}</li> */}
+        {/* <li className='font-medium'>{isOnline ? 'Online' : 'Offline'}</li> */}
+        {/* {loggedIn ? ( */}
+        {/* ) : ( */}
+        <li>
+          <SignedOut>
+            <Link to='/sign-up'>
+              <button className='bg-blue-400 hover:bg-blue-500 text-white py-2 px-3 rounded transition-colors duration-300'>
+                Login
+              </button>
+            </Link>
+          </SignedOut>
+        </li>
+        {/* )} */}
       </ul>
-    </>
+      <UserButton />
+    </nav>
   );
 };
 
 export default NavLink;
-
-/**
- *
- */

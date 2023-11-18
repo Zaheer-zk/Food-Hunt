@@ -4,6 +4,7 @@ import UserContext from '../utils/UserContext';
 
 const SearchBar = (props) => {
   const [searchKey, setSearchKey] = useState('');
+  const { user, setUser } = useContext(UserContext);
 
   const handleSearchInput = (e) => {
     setSearchKey(e.target.value);
@@ -11,46 +12,28 @@ const SearchBar = (props) => {
 
   const handleSearchButton = (e) => {
     e.preventDefault(); // Prevent form submission behavior
-
-    const data = filterData(searchKey, props.data);
-
-    // Set filtered data
-    props.setRestaurantData(data);
+    const filteredData = filterData(searchKey, props.data);
+    props.setRestaurantData(filteredData);
   };
 
-  const { user, setUser } = useContext(UserContext);
-
   return (
-    <div className="flex px-2 justify-end mt-3">
-      <form action="">
+    <div className='flex justify-center items-center mt-3'>
+      <form className='flex w-full max-w-xl relative'>
         <input
-          type="text"
-          name="search-input"
-          id="name"
-          className="p-3 m-3 shadow-md outline-none rounded-3xl focus:bg-violet-300 focus:text-white"
-          onChange={(e) =>
-            setUser({
-              ...user,
-              name: e.target.value,
-            })
-          }
-          placeholder="Enter your name"
-          value={user.name}
-        />
-        <input
-          type="text"
-          name="search-input"
-          id="search-input"
-          className="p-3 m-3 shadow-md outline-none rounded-3xl focus:bg-violet-300 focus:text-white"
-          placeholder="Search restaurant here..."
+          type='text'
+          name='search-input'
+          id='search-input'
+          className='w-full p-3 shadow-md outline-none rounded-3xl focus:ring-2 focus:ring-violet-500 transition-all'
+          placeholder='Search item here...'
           onChange={handleSearchInput}
           value={searchKey}
         />
         <button
-          type="submit"
-          className="p-3 bg-green-300 text-yellow-50 rounded-3xl hover:shadow-lg hover:bg-red-300"
-          onClick={handleSearchButton}>
-          Search
+          type='submit'
+          className='absolute right-0 px-6 h-full bg-slate-400 text-white rounded-r-3xl hover:from-green-500 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all'
+          onClick={handleSearchButton}
+        >
+          <i className='fas fa-search'></i> Search
         </button>
       </form>
     </div>

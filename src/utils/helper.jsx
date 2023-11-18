@@ -1,7 +1,7 @@
 // Filter the data
 export const filterData = (searchKey, restaurantData) => {
-  console.log(restaurantData);
+  console.log('filterData: ', restaurantData);
   return restaurantData.filter((data) =>
-    data?.data?.name?.toLowerCase()?.includes(searchKey.toLowerCase())
+    data?.info?.name?.toLowerCase()?.includes(searchKey.toLowerCase())
   );
 };

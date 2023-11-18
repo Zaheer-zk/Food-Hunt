@@ -1,14 +1,13 @@
 import Title from './Title';
 import NavLink from './NavLink';
-import { Link } from 'react-router-dom';
 
-//Header
+// Header component with a refined color palette
 const Header = () => {
   return (
-    <div className="flex justify-between bg-blue-300 shadow-lg py-3 px-3">
+    <header className='flex flex-col md:flex-row justify-between items-center bg-zinc-400 text-Neutral-700 py-4 px-4 border-b border-slate-200'>
       <Title />
       <NavLink />
-    </div>
+    </header>
   );
 };
 

@@ -18,9 +18,19 @@ const Body = () => {
       try {
         const response = await fetch(API_URL);
         const data = await response.json();
-        console.log('data', data);
-        setRestaurantData(data?.data?.cards[2]?.data?.data?.cards);
-        setMeals(restaurantData);
+        console.log(
+          'Main data: ',
+          data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants
+        );
+        setRestaurantData(
+          data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants
+        );
+        setMeals(
+          data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants
+        );
       } catch (error) {
         console.error('Error fetching data', error);
       }
@@ -33,22 +43,22 @@ const Body = () => {
   }
 
   return (
-    <>
-      <div className="search">
+    <section className='bg-stone-200 p-2'>
+      <div className='search'>
         <SearchBar data={meals} setRestaurantData={setRestaurantData} />
       </div>
-      <div className="flex flex-wrap justify-center m-3">
+      <div className='flex flex-wrap justify-center m-3'>
         {restaurantData.length === 0 ? (
           <Shimmer />
         ) : (
-          restaurantData.map((data) => (
-            <Link to={`/restaurant/${data.data.id}`} key={shortid.generate()}>
+          restaurantData.map((data, i) => (
+            <Link to={`/restaurant/${data.info.id}`} key={shortid.generate()}>
               <Card data={data} key={shortid.generate()} />
             </Link>
           ))
         )}
       </div>
-    </>
+    </section>
   );
 };
 
