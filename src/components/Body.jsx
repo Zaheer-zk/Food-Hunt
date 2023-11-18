@@ -17,7 +17,7 @@ const Body = () => {
   useEffect(() => {
     const fetchMeals = async () => {
       try {
-        const response = await axios.get(API_URL, { mode: 'cors' });
+        const response = await axios.get(API_URL);
         const data = await response.json();
         console.log(
           'Main data: ',
