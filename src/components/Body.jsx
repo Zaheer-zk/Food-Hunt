@@ -16,7 +16,7 @@ const Body = () => {
   useEffect(() => {
     const fetchMeals = async () => {
       try {
-        const response = await fetch(API_URL);
+        const response = await fetch(API_URL, { mode: 'cors' });
         const data = await response.json();
         console.log(
           'Main data: ',
