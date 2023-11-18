@@ -10,6 +10,7 @@
   "author": "Zaheer",
   "license": "ISC",
   "devDependencies": {
+    "buffer": "^5.7.1",
     "http-proxy-middleware": "^2.0.6",
     "parcel": "^2.8.3",
     "postcss": "^8.4.21",
@@ -20,6 +21,7 @@
     "@clerk/clerk-react": "^4.28.0",
     "@reduxjs/toolkit": "^1.9.3",
     "@tailwindcss/forms": "^0.5.3",
+    "axios": "^1.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.3",

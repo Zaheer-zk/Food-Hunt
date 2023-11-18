@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import shortid from 'shortid';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import SearchBar from './SearchBar';
 import Card from './Card';
@@ -16,7 +17,7 @@ const Body = () => {
   useEffect(() => {
     const fetchMeals = async () => {
       try {
-        const response = await fetch(API_URL, { mode: 'cors' });
+        const response = await axios.get(API_URL, { mode: 'cors' });
         const data = await response.json();
         console.log(
           'Main data: ',
